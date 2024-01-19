@@ -1,7 +1,7 @@
 import csv
 total_records = 0
 
-with open() as csvfile:
+with open("") as csvfile:
     file = csv.reader(csvfile)
 
     for rec in file:
@@ -18,9 +18,9 @@ with open() as csvfile:
         
         if rec[1] == "DL":
             manu = "Dell"
-        elif rec[1] = "GW"
+        elif rec[1] == "GW":
             manu = "Gateway"
-        elif rec[1] == "HP"
+        elif rec[1] == "HP":
             manu = rec[1]
         else:
             manu = "ERROR"
@@ -44,4 +44,4 @@ with open() as csvfile:
 
         #final printed message for each machine
         print(rec)
-        print(f"{comp_type} {manu} {processor} {ram} {hdd 1} {num hdd} {hdd 2} {os} {year}")
+        print(f"{comp_type} {manu} {processor} {ram} {hdd_1} {num_hdd} {hdd_2} {os} {year}")
