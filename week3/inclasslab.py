@@ -129,4 +129,12 @@ average = total_size / count_size
 
 print(f"AVERAGE HDD#1 SIZE: {average:0.2f}TB or {average*1000:0.2f}GB")
 
+for index in range(0, len(os_list)):
+
+    if os_list[index] == "15" or "16":
+            os_count += 1  
+
+            desk_top_replace = os_count
+            
+
 
