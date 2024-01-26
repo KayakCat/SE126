@@ -1,8 +1,24 @@
 #Latoya Hall
 #1/23/2024
-#w3d1demo.py - text file handling and storing to 1D lists
+#w3inclass.py 
 #Variable Dictionary
 
+#total_records          total records in csv file
+#rec                    a single record in the file
+#comp_type              specifies if the computer is a desktop or laptop 
+#manu                   specifies the manufacturer of the computer (dell, gateway, or HP) 
+#processor              specifies the processor (i5 or i7)
+#ram                    specifies the ram (8GB or 16GB)
+#hdd_1                  specifies hard drive space (500GB or 001TB)
+#num_hdd                specifies the number of hard drives (1 or 2)
+#hdd_2                  if the computer has 2 hard drives this specifies space (500GB OR 001TB)
+#os                     specifies the operating system 
+#year                   specifies the year the computer was manufactured (range of 2015 - 2018) 
+#file                   csv file
+#desktop_count          number of desktops manufactured in 2016 or older
+#laptop_count           number of laptops manufactured in 2016 or older
+#desktop_count_cost     cost of desktops to be replaced (desktop_count * 2000)
+#laptop_count_cost      cost of laptops to be replaced (laptop_count * 1500)
 #-----------------------------------------------------------------------
 
 import csv
@@ -24,7 +40,7 @@ year_list = []
 print(f"{'TYPE':8} {'MANU':8} {'PROC':6} {'RAM':6} {'HDD 1':6} {'#HDD':5} {'HDD 2':6} {'OS':4} {'YEAR':4}")
 print("------------------------------------------------------------------------------")
 
-with open("week3/lab2b.csv") as csvfile:
+with open("lab2b.csv") as csvfile:
 
     file = csv.reader(csvfile)
 
@@ -103,38 +119,26 @@ for index in range(0, total_records):
     #process the lists to: count the number of desktops
 
 desktop_count = 0
+laptop_count = 0
 for index in range(0, len(comp_type_list)):
     #look through the comp type list to find "desktop"
     if comp_type_list[index] == "Desktop" and int(year_list[index]) <= 16:
-            desktop_count += 1 #adds one for everytime "Desktop" is found
-print(f"TOTAL DESKTOPS IN FILE: {desktop_count}")        
+            desktop_count += 1 #adds one for everytime "Desktop" 2016 or older is found
 
-#len() is a length function; when passed a (list) it returns an integer: # of values in list
-#process the lists to: find the average hdd_1 size
-total_size = 0
-count_size = 0
+    elif comp_type_list[index] == "Laptop" and int(year_list[index]) <= 16:
+        laptop_count += 1 #adds one for everytime a laptop 2016 or older is found
 
-for index in range(0, len(hdd_1_list)):
+print(f"TOTAL DESKTOPS 2016 AND OLDER: {desktop_count}")  
+print(f"TOTAL LAPTOPS 2016 AND OLDER:  {laptop_count}")      
 
-    if hdd_1_list[index] == "001TB":
-        total_size += 1
-    
-    else:
-        total_size += 0.5
 
-    count_size += 1
+            
+desktop_count_cost = desktop_count * 2000 #calculate the cost to replace desktops 2016 and older
 
-average = total_size / count_size
-#could also use: "len(hdd_1_list)" or "total_records" in place of "count size"
+laptop_count_cost = laptop_count * 1500 #calculate the cost to replace laptops 2016 and older
 
-print(f"AVERAGE HDD#1 SIZE: {average:0.2f}TB or {average*1000:0.2f}GB")
-
-for index in range(0, len(os_list)):
-
-    if os_list[index] == "15" or "16":
-            os_count += 1  
-
-            desk_top_replace = os_count
+print(f"To replace 8 Desktop computers it will cost: ${desktop_count_cost}")
+print(f"To replace 2 Laptops it will cost:           ${laptop_count_cost}")
             
 
 
