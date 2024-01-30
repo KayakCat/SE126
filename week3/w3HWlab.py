@@ -33,10 +33,10 @@ age_list =[]
 registered_list =[]
 has_voted_list =[]
 
-print(f"{'ID NUMBER':4}      {'AGE':6}        {'REGISTERED TO VOTE':6} {'DID THEY VOTE':6}")
+print(f"{'ID NUMBER':10} {'AGE':5} {'REGISTERED':5} {'VOTED (Y/N)':5}")
 print("------------------------------------------------------------------------------")
 
-with open("lab3HW.csv") as csvfile:
+with open("week3/lab3HW.csv") as csvfile:
 
     file = csv.reader(csvfile)
 
@@ -52,14 +52,18 @@ with open("lab3HW.csv") as csvfile:
 
         if rec[1] < "18":
             ineligible += 1
+            has_voted = "N"
         elif rec[2] =="N":
             unreg += 1
-        elif rec[2] == "Y" and rec[3] == "N":   
-            eligible_not_voted += 1
-        else:
-            has_voted == "Y"
-            votes  += 1
-
+            has_voted = "N"
+        elif rec[2] == "Y":
+            if rec[3] == "N":
+             eligible_not_voted += 1
+             has_voted = "N"  #Displays "N" if registered but did not vote
+            else:
+             votes += 1
+             has_voted = "Y"  #Displays "Y" if registered and voted
+            
         #append respective values to the appropriate field list
         id_number_list.append(rec[0])
         age_list.append(age)
@@ -67,8 +71,10 @@ with open("lab3HW.csv") as csvfile:
         has_voted_list.append(has_voted)
 
 for index in range(0, total_records):
-    #for index in range(0, len(comp_type_list)): --> len(comp_type_list) returns the INTEGER count of values
-    print(f"{id_number_list[index]:4} {age_list[index]:6} {registered_list[index]:6} {has_voted_list[index]:6}")
+    
+
+    print(f"{id_number_list[index]:<10} {age_list[index]:<10} {registered_list[index]:<10} {has_voted_list[index]:<10}")
+
 
 
     
