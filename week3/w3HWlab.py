@@ -50,18 +50,18 @@ with open("week3/lab3HW.csv") as csvfile:
 
         #filter for display------------------------------------------------
 
-        if rec[1] < "18":
+        if rec[1] < "18": #filters eligibility by age, if under 18 ineligible
             ineligible += 1
             has_voted = "N"
-        elif rec[2] =="N":
+        elif rec[2] =="N": #filters if they have registered to vote or not
             unreg += 1
             has_voted = "N"
-        elif rec[2] == "Y":
+        elif rec[2] == "Y": #filters that yes they registered to vote but they did not vote
             if rec[3] == "N":
              eligible_not_voted += 1
              has_voted = "N"  #Displays "N" if registered but did not vote
             else:
-             votes += 1
+             votes += 1 #else statement is for those who are eligible, registered, and voted
              has_voted = "Y"  #Displays "Y" if registered and voted
             
         #append respective values to the appropriate field list
@@ -70,9 +70,9 @@ with open("week3/lab3HW.csv") as csvfile:
         registered_list.append(rec[2])
         has_voted_list.append(has_voted)
 
-for index in range(0, total_records):
+for index in range(0, total_records): #print the records in a neat format
     
-
+    #printing each field in a neat format by id number, age, registered (Y/N), and has voted (Y/N).
     print(f"{id_number_list[index]:<10} {age_list[index]:<10} {registered_list[index]:<10} {has_voted_list[index]:<10}")
 
 
