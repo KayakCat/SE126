@@ -1,5 +1,5 @@
 #Latoya Hall
-#1/30/24
+#week4_classlab.py
 
 #VARIABLE DICTIONARY
 
@@ -112,9 +112,26 @@ for i in range(0,len(all_students)):
     #include an extra empty print() to cancel the interior print's end = ""
     print()
 
+let_avg = []
+
+for i in range(0, len(all_students[i])):
     
+    if average[i] >= 90:
+        let_a = "A"
 
+    elif average[i] >= 80:
+        let_a = "B"
 
+    elif average[i] >= 70:
+        let_a = "C"
 
+    elif average[i] >= 60:
+        let_a = "D"
 
+    else:
+        "F"
 
+    let_avg.append(let_a)
+
+print(f"{'FIRST':12} \t {'LAST':12} \t {'TEST1'} \t {'TEST2'} \t {'TEST3'} \t {'AVERAGE'} \t {'LETTER AVERAGE'}")
+print(f"{let_a[i]}")
