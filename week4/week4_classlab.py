@@ -112,9 +112,14 @@ for i in range(0,len(all_students)):
     #include an extra empty print() to cancel the interior print's end = ""
     print()
 
+#calculate average and letter grade
 let_avg = []
+avg = []
 
-for i in range(0, len(all_students[i])):
+for i in range(0, len(all_students)):
+
+    test_avg = (test1[i] + test2[i] + test3[i]) /3 
+    avg.append(test_avg)
     
     if average[i] >= 90:
         let_a = "A"
@@ -129,9 +134,13 @@ for i in range(0, len(all_students[i])):
         let_a = "D"
 
     else:
-        "F"
+        let_a = "F"
 
     let_avg.append(let_a)
+  
 
 print(f"{'FIRST':12} \t {'LAST':12} \t {'TEST1'} \t {'TEST2'} \t {'TEST3'} \t {'AVERAGE'} \t {'LETTER AVERAGE'}")
-print(f"{let_a[i]}")
+    for x in range(0, len(all_students)):
+    
+    
+    print(f"{'LETTER AVERAGE: '}{let_avg[i]}")
