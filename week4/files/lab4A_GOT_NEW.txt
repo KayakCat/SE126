@@ -1,12 +1,12 @@
 Eddard,Stark,44,Ned,House Stark
-Benjen,Stark,42,ColdHands,Night's Watch
+Benjen,Stark,42,ColdHands,Nights Watch
 Catelyn,Stark,45,Mother,House Tully
 Arya,Stark,16,Girl,House Stark
 Robb,Stark,18,Young Wolf,House Stark
 Sansa,Stark,17,Little Dove,House Stark
 Bran,Stark,15,Raven,House Stark
 Rickon,Stark,14,Serpentine,House Stark
-Jon,Snow,18,Brother,Night's Watch
+Jon,Snow,18,Brother,Nights Watch
 Tyrion,Lannister,36,The Imp,House Lannister
 Jaime,Lannister,39,Kingslayer,House Lannister
 Cersei,Lannister,39,The Queen,House Lannister
