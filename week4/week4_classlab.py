@@ -140,7 +140,8 @@ for i in range(0, len(all_students)):
   
 
 print(f"{'FIRST':12} \t {'LAST':12} \t {'TEST1'} \t {'TEST2'} \t {'TEST3'} \t {'AVERAGE'} \t {'LETTER AVERAGE'}")
-    for x in range(0, len(all_students)):
+    
+for x in range(0, len(all_students)):
     
     
     print(f"{'LETTER AVERAGE: '}{let_avg[i]}")
