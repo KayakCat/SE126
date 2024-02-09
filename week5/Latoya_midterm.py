@@ -43,25 +43,25 @@ for i in range(0, len(fname)):
     elif zodiac[i] == "Leo":
         tarot_card.append("The Sun")
 
-    elif zodiac == "Virgo":
+    elif zodiac[i] == "Virgo":
         tarot_card.append("The Hermit")
 
-    elif zodiac == "Libra":
+    elif zodiac[i] == "Libra":
         tarot_card.append("Justice")
 
-    elif zodiac == "Scorpio":
+    elif zodiac[i] == "Scorpio":
         tarot_card.append("Death")
 
-    elif zodiac == "Sagittarius":
+    elif zodiac[i] == "Sagittarius":
         tarot_card.append ("Temperance")
 
-    elif zodiac == "Capricorn":
+    elif zodiac[i] == "Capricorn":
         tarot_card.append("The Devil")
 
-    elif zodiac == "Aquarius":
+    elif zodiac[i] == "Aquarius":
         tarot_card.append("The Star")
 
-    elif zodiac == "Pisces":
+    elif zodiac[i] == "Pisces":
         tarot_card.append("The Moon")
 
     else:
@@ -69,6 +69,8 @@ for i in range(0, len(fname)):
 
 
     print(f"{fname[i]:8} \t {bday[i]:5} \t\t {zodiac[i]:15} \t {tarot_card[i]:15}")
+
+
 
 
 

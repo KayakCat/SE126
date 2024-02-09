@@ -21,7 +21,7 @@ Vbob,4/6,Aries
 Jade,9/21,Virgo
 Rachel,8/20,Leo
 Jess,7/16,Cancer
-Jon,10/16,LIbra
+Jon,10/16,Libra
 Geena,8/28,Virgo
 Emily,9/3,Virgo
 Amy,5/14,Taurus
