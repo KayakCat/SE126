@@ -17,7 +17,8 @@
 #meaning                    value assigned to else statement in the def get_tarot_card_meaning function for the card parameter and the return statment to exit the function
 #def tarot_menu             menu created to search up tarot card meanings in upright and reverse
 #choice                     variable assigned to create input statements for users to make selections in the menu
-
+#-------------------Program Description----------------------------------------------------------------
+#This program prints out a list of names, birthdays, and zodiac signs. It then prints out a second list that adds zodiac traits and the tarot card associated with the zodiac sign. After that 4 choice menu pops up to look up the tarot card meanings in the upright and reversed positions
 
 import csv
 
