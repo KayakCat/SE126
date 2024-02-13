@@ -1,3 +1,24 @@
+#Latoya Hall
+#latoya_midterm.py
+#02/13/2024
+
+#---------------VARIABLE DICTIONARY------------------------------------------------------
+#fname                      first name in text file
+#bday                       month and day of birth in text file
+#zodiac                     zodiac sign in text file
+#tarot_card=[]              used to assign tarot cards to each zodiac sign
+#zodiac_traits = []         to assign traits to the zodiac signs
+#tarot_card_info_upright    dictionary of all tarot cards and their upright meanings
+#tarot_card_info_reversed   dictionary of all tarot cards and their reversed meanings
+#def get_tarot_card_meaning function created to be able to use the menu created to look up tarot card meanings in upright and reverse
+#card                       parameter in the def get_tarot_card_meaning function to choose a tarot card
+#orientation                parameter in teh def get_tarot_card meaning function to choose upright or reversed orientation of tarot card
+#meanings_dict              value used to assign orientation and card parameters in def get_tarot_meanings function
+#meaning                    value assigned to else statement in the def get_tarot_card_meaning function for the card parameter and the return statment to exit the function
+#def tarot_menu             menu created to search up tarot card meanings in upright and reverse
+#choice                     variable assigned to create input statements for users to make selections in the menu
+
+
 import csv
 
 fname = []
@@ -21,64 +42,70 @@ for i in range(0, len(fname)):
     print(f"{fname[i]:8} \t {bday[i]:5} \t\t {zodiac[i]:15}")
 
 
-print(f"{'FIRST NAME':8} \t {'BIRTHDAY':5} \t {'ZODIAC SIGN':15} \t {'TAROT CARD':15}")
-print("--------------------------------------------------------------------------------")
+print(f"{'FIRST NAME':8} \t {'BIRTHDAY':5} \t {'ZODIAC SIGN':15} \t {'ZODIAC TRAITS':45} \t {'TAROT CARD':15}")
+print("--------------------------------------------------------------------------------------------------------------------")
 
-tarot_card = []
+tarot_card = []#getting zodiac signs to assign tarot cards to each one
+zodiac_traits = []
 
 for i in range(0, len(fname)):
 
     if zodiac[i] == "Aries":
         tarot_card.append("The Emporer")
+        zodiac_traits.append("Courageous, confident, and determined.")
 
     elif zodiac[i] == "Taurus":
         tarot_card.append("The Hierophant")
+        zodiac_traits.append("Patient, reliable, and practical")
 
     elif zodiac[i] == "Gemini":
         tarot_card.append("The Lovers")
+        zodiac_traits.append("Adaptable, outgoing, and intelligent")
 
     elif zodiac[i] == "Cancer":
         tarot_card.append("The Chariot")
+        zodiac_traits.append("Emotional, intuitive, and protective")
 
     elif zodiac[i] == "Leo":
         tarot_card.append("The Sun")
+        zodiac_traits.append("Confident, generous, and charismatic")
 
     elif zodiac[i] == "Virgo":
         tarot_card.append("The Hermit")
+        zodiac_traits.append("Detail-oriented, practical, and analytical")
 
     elif zodiac[i] == "Libra":
         tarot_card.append("Justice")
+        zodiac_traits.append("Charming, diplomatic, and fair-minded")
 
     elif zodiac[i] == "Scorpio":
         tarot_card.append("Death")
+        zodiac_traits.append("Passionate, resourceful, and determined")
 
     elif zodiac[i] == "Sagittarius":
         tarot_card.append ("Temperance")
+        zodiac_traits.append("Optomistic, adventurous, and independent")
 
     elif zodiac[i] == "Capricorn":
         tarot_card.append("The Devil")
+        zodiac_traits.append("Ambitious, disciplined, and patient")
 
     elif zodiac[i] == "Aquarius":
         tarot_card.append("The Star")
+        zodiac_traits.append("Inventive, open-minded, and humanitarian")
 
     elif zodiac[i] == "Pisces":
         tarot_card.append("The Moon")
+        zodiac_traits.append("Compassionate, artistic, and intuitive")
 
     else:
         tarot_card.append("Invalid entry")
+        zodiac_traits.append("N/A")
 
 
-    print(f"{fname[i]:8} \t {bday[i]:5} \t\t {zodiac[i]:15} \t {tarot_card[i]:15}")
+    print(f"{fname[i]:8} \t {bday[i]:5} \t\t {zodiac[i]:15} \t {zodiac_traits[i]:45} \t {tarot_card[i]:15}")
 
-
-#tarot = []
-#tarot.append(['The Emporer', 'The Heirophant', 'The Lovers', 'The Chariot', 'The Sun', 'The Hermit', 'Justice', 'Death', 'Temperance', 'The Devil', 'The Star', 'The Moon'])
-
-#tarot.append(['Fire Element', 'Earth Element', 'Air Element', 'Water Element', 'Fire Element', 'Earth Element', 'Air Element', 'Water Element', 'Fire Element', 'Earth Element', 'Aquarius', 'Water Element'])
-
-#print(tarot[0][1])
-
-
+#Big dictionary of upright and reversed tarot card meanings
 tarot_card_info_upright = {
     'The Emporer': "Do not let anyone else take your power away from you. Be a leader but not a dictator, find a balance between authority and compassion.",
     'The Hierophant': "You're the kind of person who sticks to the old-school way of doing things. Knowledge Sharing and Education: Sharing what you know with others is a big deal. Marriage and Teamwork: You like working with others and following the rules.",
@@ -110,34 +137,62 @@ tarot_card_info_reversed = {
 }
 
 def get_tarot_card_meaning(card, orientation='upright'):
-    # Determine which dictionary to use based on the orientation
+    # Determine which dictionary to use based on the orientation of the tarot card using 2 parameters --> card and orientation  
     if orientation == 'upright':
         meanings_dict = tarot_card_info_upright
     else:
         meanings_dict = tarot_card_info_reversed
 
-    # Retrieve the meaning
+    # Retrieve the meaning using if else statements
     
     if card in meanings_dict:
         meaning = meanings_dict[card]
     else:
         meaning = f"Meaning for {card} not available for {orientation} orientation."
 
+    return meaning    
+
+#tarot menu to choose the card and orientation that you want the meaning of
+
 def tarot_menu():
     print("\n--Tarot Card Meaning Lookup--")
     print("1. Upright Meaning")
     print("2. Reversed Meaning")
-    print("3. Exit")
+    print("3. What is the meaning of life")
+    print("4. Exit")
 
-    # Get the user's choice
-    choice = input("Enter your choice (1, 2, or 3): ")
+    # Get the user's input (choice) to navigate the menu
+    choice = input("Enter your choice (1, 2, 3, or 4): ")
 
     # Loop to trap the user if they don't follow the directions
-    while choice not in ['1', '2', '3']:
-        print("*INVALID ENTRY* Enter 1, 2, or 3 only.")
-        choice = input("Enter your choice (1, 2, or 3): ")
+    while choice not in ['1', '2', '3', '4']:
+        print("*INVALID ENTRY* Enter 1, 2, 3, or 4 only.")
+        choice = input("Enter your choice (1, 2, 3, or 4): ")
 
     return choice
+
+choice = '0'
+
+while choice != '4':
+
+    choice = tarot_menu() #calling the menu into the loop
+
+    if choice == '1':
+        card = input("Enter the tarot card for upright meaning: ")
+        meaning = get_tarot_card_meaning(card, 'upright')
+        print(f"\nMeaning of {card} in the upright position: {meaning}")
+
+    elif choice == '2':
+        card = input("Enter the tarot card for reversed meaning: ")
+        meaning = get_tarot_card_meaning(card, 'reversed')
+        print(f"\nMeaning of {card} in the reversed position: {meaning}")
+
+    elif choice == '3':
+        print(f"42") #Hitchhikers Guide to the Galaxy Reference
+
+    elif choice == '4':
+        print("Exiting Tarot Card Meaning Lookup. Enjoy the magic of life. Marvel in the mysteries of the universe. Eat your vegetables...yum yum! Namaste!")
+
 
 
 
