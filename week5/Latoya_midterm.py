@@ -18,7 +18,7 @@
 #def tarot_menu             menu created to search up tarot card meanings in upright and reverse
 #choice                     variable assigned to create input statements for users to make selections in the menu
 #-------------------Program Description----------------------------------------------------------------
-#This program prints out a list of names, birthdays, and zodiac signs. It then prints out a second list that adds zodiac traits and the tarot card associated with the zodiac sign. After that 4 choice menu pops up to look up the tarot card meanings in the upright and reversed positions
+#This program prints out a list of names, birthdays, and zodiac signs. It then prints out a second list that adds zodiac traits and the tarot card associated with the zodiac sign. After that a 4 choice menu pops up to look up the tarot card meanings in the upright and reversed positions
 
 import csv
 
@@ -39,7 +39,7 @@ print(f"{'FIRST NAME':8} \t {'BIRTHDAY':5} \t {'ZODIAC SIGN':15}")
 print("--------------------------------------------------------------------------------")
 
 for i in range(0, len(fname)):
-
+    #first list print
     print(f"{fname[i]:8} \t {bday[i]:5} \t\t {zodiac[i]:15}")
 
 
@@ -103,7 +103,7 @@ for i in range(0, len(fname)):
         tarot_card.append("Invalid entry")
         zodiac_traits.append("N/A")
 
-
+    #second list print
     print(f"{fname[i]:8} \t {bday[i]:5} \t\t {zodiac[i]:15} \t {zodiac_traits[i]:45} \t {tarot_card[i]:15}")
 
 #Big dictionary of upright and reversed tarot card meanings
