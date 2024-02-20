@@ -12,7 +12,7 @@
 #tarot_card_info_reversed   dictionary of all tarot cards and their reversed meanings
 #def get_tarot_card_meaning function created to be able to use the menu created to look up tarot card meanings in upright and reverse
 #card                       parameter in the def get_tarot_card_meaning function to choose a tarot card
-#orientation                parameter in teh def get_tarot_card meaning function to choose upright or reversed orientation of tarot card
+#orientation                parameter in the def get_tarot_card meaning function to choose upright or reversed orientation of tarot card
 #meanings_dict              value used to assign orientation and card parameters in def get_tarot_meanings function
 #meaning                    value assigned to else statement in the def get_tarot_card_meaning function for the card parameter and the return statment to exit the function
 #def tarot_menu             menu created to search up tarot card meanings in upright and reverse
