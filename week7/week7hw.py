@@ -35,27 +35,66 @@ class1 = []
 class2 = []
 class3 = []
 
+#initialize counters
+records = 0 #holds the total number of records in file/each list
+
+search_count = 0 #holds the count of search loops (how many search loops were used to find the item we are looking for)
+
 with open("week7/lab5_students.txt") as csvfile:
 
     file = csv.reader(csvfile)
 
     for rec in file:
+
+        records += 1
+
         student_id.append(rec[0])
         lname.append(rec[1])
         fname.append(rec[2])
         class1.append(rec[3])
         class2.append(rec[4])
         class3.append(rec[5])
-print(f"{'Student ID':6}\t{'Last Name':12}\t{'First Name':12}\t{'Class 1':3}\t{'Class 2':3}\t{'Class 4':3}")
+
+        #initialize counters
+        records = 0 #holds the total number of records in file/each list
+
+print(f"{'Student ID':4}\t{'Last Name':12}\t{'First Name':12}\t{'Class 1':3}\t{'Class 2':3}\t{'Class 3':3}")
 print("-------------------------------------------------------------------------------------------------")
 for i in range (0, len(student_id)):
-    print(f"{student_id[i]:6}\t{lname[i]:12}\t{fname[i]:12}\t{class1[i]:3}\t{class2[i]:3}\t{class3[i]:3}")
+    print(f"{student_id[i]:6}\t\t{lname[i]:12}\t{fname[i]:12}\t{class1[i]:3}\t{class2[i]:3}\t{class3[i]:3}")
 ("----------------------------------------------------------------------------------------")
-choice = '0'
 
-while choice != '4':
 
-    choice = class_menu() #calling the menu into the loop
+#SEQUENTIAL SEARCH
+search_name = input("Enter the name of the student you are looking for: ")
 
+found = [] #allows for multiples in search
+
+seq_count = 0
+
+#loop to review each value in the list
+for i in range (0,len(lname)):
+    seq_count += 1
+
+    if search_name.lower == lname[i].lower():
+
+        found.append[i]
+
+print(f"Search complete")
+ 
+
+  
+
+    
+
+#choice = '0'
+
+#while choice != '5':
+
+    #choice = class_menu() #calling the menu into the loop
+
+    #if 
+
+    
 
 
