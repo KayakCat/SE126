@@ -6,7 +6,7 @@
 #def SelectSeat                 function to allow user to select seats
 #while selectSeatPlacement      while loop to verify seat placement
 #seatrow                        
-#     
+#    
 
 seats = [] #Generates seats 2d array
 for i in range(0, 7):
@@ -44,8 +44,9 @@ def selectSeat(seats):
 
             #converts seat letter to index
             letterDictionary = {"A": 0, "B":1, "C":2, "D":3}
-            if seatLetter in letterDictionary.keys:
+            if seatLetter in letterDictionary.keys():
                 isInproperLetter = 'n'
+            else:
                 print("Not a proper Seat")
 
 
@@ -61,7 +62,7 @@ def selectSeat(seats):
             # asks user if the want to select another seat
             another = input("Would you like to select another seat? (y/n): ")
             if another != "y":
-                seatselectSeatPlacement = "n"
+                selectSeatPlacement = "n"
         else:
             print("Select another seat: ")
     return seats

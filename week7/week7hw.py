@@ -52,18 +52,18 @@ def class_menu():
     return choice
 
 
-# helper function to print header
+#function to print header
 def header():
     print(f"{'Student ID':4}\t{'Last Name':12}\t{'First Name':12}\t{'Class 1':3}\t{'Class 2':3}\t{'Class 3':3}")
     spacer()
 
 
-# helper function to print a spacer
+#function to print a spacer
 def spacer():
     print("-" * 75)
 
 
-# helper function to print a record
+#function to print records
 def print_record(index):
     print(f"{student_ids[index]:6}\t\t{lnames[index]:12}\t{fnames[index]:12}\t{class1[index]:3}\t{class2[index]:3}\t{class3[index]:3}")
 
