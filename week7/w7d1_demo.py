@@ -53,7 +53,7 @@ for i in range (0, len(lname)):
         found.append(i)
 
 print(f"\n\tsearching complete. search loop ran {seq_count} iterations")
-if found[0] != "":
+if found:
     print(f"\n\t We found {search_name} at index position(s): {found}")
     print(f"\tHere is their info:")
 

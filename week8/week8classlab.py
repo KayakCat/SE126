@@ -5,6 +5,7 @@
 #seats []                       used to generate seats in a 2D list
 #def SelectSeat                 function to allow user to select seats
 #while selectSeatPlacement      while loop to verify seat placement
+#seatrow                        
 #     
 
 seats = [] #Generates seats 2d array
@@ -21,7 +22,7 @@ def selectSeat(seats):
     #loops and checks if user is getting seat placement
     selectSeatPlacement = "y"
     while selectSeatPlacement == "y":
-        #Asks user for seat row, and makes sure that row is not greater then largest amount fo rows
+        #Asks user for seat row, and makes sure that row is not greater then largest amount of rows
         #Makes sure that value is number and within range
         seatRow = -1
         while seatRow not in range(0, len(seats)):

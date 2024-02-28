@@ -55,14 +55,11 @@ with open("week7/lab5_students.txt") as csvfile:
         class2.append(rec[4])
         class3.append(rec[5])
 
-        #initialize counters
-        records = 0 #holds the total number of records in file/each list
-
 print(f"{'Student ID':4}\t{'Last Name':12}\t{'First Name':12}\t{'Class 1':3}\t{'Class 2':3}\t{'Class 3':3}")
 print("-------------------------------------------------------------------------------------------------")
 for i in range (0, len(student_id)):
     print(f"{student_id[i]:6}\t\t{lname[i]:12}\t{fname[i]:12}\t{class1[i]:3}\t{class2[i]:3}\t{class3[i]:3}")
-("----------------------------------------------------------------------------------------")
+print("-------------------------------------------------------------------------------")
 
 
 #SEQUENTIAL SEARCH
@@ -73,28 +70,25 @@ found = [] #allows for multiples in search
 seq_count = 0
 
 #loop to review each value in the list
-for i in range (0,len(lname)):
+for i in range (0, len(lname)):
+    
     seq_count += 1
 
-    if search_name.lower == lname[i].lower():
+    if search_name.lower() == lname[i].lower():
 
-        found.append[i]
+        found.append(i)
 
-print(f"Search complete")
- 
-
-  
-
-    
-
-#choice = '0'
-
-#while choice != '5':
-
-    #choice = class_menu() #calling the menu into the loop
-
-    #if 
-
-    
+print("-----------Search Complete-------------------")
 
 
+if found:
+    print(f"\n\t We found {search_name} at index position(s): {found}")
+    print(f"\tHere is their info:")
+
+    for i in found:
+        print(f"\t\t{fname[i]} \t{lname[i]} \t{student_id[i]} \t{class1[i]} \t{class2[i]} \t{class3[i]}")
+
+
+else:
+     print(f"\n\tWe could not find {search_name}")
+     print(f"\tPlease try again\n")
