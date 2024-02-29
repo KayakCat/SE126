@@ -1,5 +1,31 @@
 #Latoya Hall
 #week7hw.py
+#02/28/24
+
+#------------VARIABLE DICTIONARY------------------------------------------------------
+#student_ids = []                                   student id numbers from csv file
+#lnames = []                                        student last names from  csv file
+#fnames = []                                        student first names from csv file
+#class1 = []                                        class 1 from csv file
+#class2 = []                                        class 2 from csv file
+#class3 = []                                        class 3 from csv file
+#records                                            holds the total number of records in file/each list
+#def class_menu()                                   function for the menu to get user input
+#choice                                             variable assigned to users input choice
+#while choice not in                                loop trap so that the user has to input menu choices
+#def header()                                       function to print header 
+#def spacer()                                       function to print dashes under header
+#def print_record(index)                            function to print student records
+#def display_all()                                  functin to display all student records
+#def class_search
+#def binary_search(question, input_array)           function for binary search with 
+#min_index                                          minimum boundary for binary search
+#max_index                                          maximum boundary for binary search
+#guess
+#running                                            variable assigned to run the main program
+#while_running                                      while loop to run the main program
+#def main                                           function for the main program
+
 
 #------------------LIBRARIES-------------------------------------------------
 import csv
@@ -89,36 +115,45 @@ def class_search():
     spacer()
 
 
-# function to search through an input using binary search
+# function to search through an input using binary search with parameters
+#question --> the prompt/question to ask the user for the search value
+#input_array --> the list that is being searched
+
 def binary_search(question, input_array):
-    search = input(f"{question}?: ").lower()
-    min = 0
-    max = records - 1
-    guess = int((min + max) / 2)
+    search = input(f"{question}?: ").lower() #get user input for search
 
-    while (min < max and search != input_array[guess]):
-        if search < input_array[guess]:
-            max = guess - 1
+    #search boundaries 
+    min_index = 0
+    max_index = records - 1
+    guess = int((min_index + max_index) / 2)
 
+    # Perform binary search
+    while min_index <= max_index and search != input_array[guess].lower():
+        if search < input_array[guess].lower():
+            
+            max_index = guess - 1
         else:
-            min = guess + 1
+            
+            min_index = guess + 1
 
-        guess = int((min + max) / 2)
+        # Update the guess based on the new boundaries
+        guess = int((min_index + max_index) / 2)
 
-        if search == input_array[guess].lower():
-            header()
-            print_record(guess)
-            spacer()
+    # If the search value is found, display the record
+    if min_index <= max_index:
+        header()
+        print_record(guess)
+        spacer()
+    else:
+        # If the search value is not found, print a message indicating that
+        print("The specified last name was not found.")
 
-        else:
-            continue
-
-
+#main function to execute the program
 def main():
         
     running = True
     while running:
-        answer = int(class_menu())
+        answer = int(class_menu())#get users choice from the class menu
 
         if answer == 1:
             display_all()
@@ -132,9 +167,9 @@ def main():
         elif answer == 4:
             class_search()
 
-        elif answer == 5:
+        elif answer == 5: #exit the loop
             running = False
 
-
+#program entry point
 if __name__ == "__main__":
     main()
