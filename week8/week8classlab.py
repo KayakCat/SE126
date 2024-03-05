@@ -4,9 +4,15 @@
 #-----------------VARIABLE DICTIONARY----------------------------------------
 #seats []                       used to generate seats in a 2D list
 #def SelectSeat                 function to allow user to select seats
-#while selectSeatPlacement      while loop to verify seat placement
-#seatrow                        
-#    
+#printSeats(seats)              prints all the seats on the plane               
+#while selectSeatPlacement      while loop to verify seat availability                                           
+#while seatRow                  while loop to select row and ensure selection is within range
+#while isInproperLetter         while loop to ask which seat the user wants
+#letterDictionary               used to convert the letter to index
+#seatLetter                     variable created to ask the user which seat
+#selectedSeat                   puts an x over the seat that has been selected
+#def printSeats(seats)          function to print the seat layout with selected seats
+#rowstring                      variable used to assign spaces, dashes, and pipes around the border of the seat map
 
 seats = [] #Generates seats 2d array
 for i in range(0, 7):
