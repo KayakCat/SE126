@@ -1,85 +1,83 @@
-seats = [] #Generates seats 2d array
-for i in range(0, 7):
-    seats.append(["A", "B", "C", "D"])
+# Define constants
+SEAT_AVAILABLE = '#'
+SEAT_TAKEN = '*'
 
+# Function to display the seating chart
+def display_seating_chart(seats):
+    # Print header
+    print("  ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    # Print rows
+    for i, row in enumerate(seats, start=1):
+        print(f"{i:2} {' '.join(row)}")
 
-#function allows user to select row and seat for flight
-def selectSeat(seats):
-    #Prints array
-    printSeats(seats)
+# Function to allow the user to select a seat
+def select_seat(seats):
+    # Display seating chart
+    display_seating_chart(seats)
 
+    # Loop until user finishes selecting seats
+    while True:
+        row = get_valid_row_input(len(seats))
+        seat = get_valid_seat_letter_input()
 
-    #loops and checks if user is getting seat placement
-    selectSeatPlacement = "y"
-    while selectSeatPlacement == "y":
-        #Asks user for seat row, and makes sure that row is not greater then largest amount of rows
-        #Makes sure that value is number and within range
-        seatRow = -1
-        while seatRow not in range(0, len(seats)):
-            try:
-                seatRow = int(input("What row do you want to sit in?: "))-1
-            except:
-                print("ROW must be a Integer")
-
-
-            if seatRow not in range(0, len(seats)):
-                print(f"ROW must be greater than 0 and less than or equal to {len(seats)}")
-
-
-        isInproperLetter = "y"
-        while isInproperLetter == "y":
-            #asks user for seat letter
-            seatLetter = input("What seat do you want?: ")
-
-
-            #converts seat letter to index
-            letterDictionary = {"A": 0, "B":1, "C":2, "D":3}
-            if seatLetter in letterDictionary.keys():
-                isInproperLetter = 'n'
-            else:
-                print("Not a proper Seat")
-
-
-        #gets seat user has slected
-        selectedSeat = seats[seatRow][letterDictionary[seatLetter]]
-
-
-        #checks if seat has been slected already
-        if selectedSeat != "X":
-            #sets seat at position to X
-            seats[seatRow][letterDictionary[seatLetter]] = "X"
-            printSeats(seats)
-            # asks user if the want to select another seat
-            another = input("Would you like to select another seat? (y/n): ")
-            if another != "y":
-                selectSeatPlacement = "n"
+        if seats[row][ord(seat) - ord('A')] == SEAT_AVAILABLE:
+            seats[row][ord(seat) - ord('A')] = SEAT_TAKEN
+            print("Seat selected successfully.")
         else:
-            print("Select another seat: ")
+            print("Sorry, that seat is already taken. Please choose another seat.")
+
+        # Check if user wants to select another seat
+        choice = input("Do you want to select another seat? (y/n): ").lower()
+        if choice != 'y':
+            break
+
     return seats
 
-
-#Itterates though seat array and prints 2d
-def printSeats(seats):
-    print("AirDrogon ~ Valyria Bount Flight #4815")
-    #prints top boarder and heading
-    print("-"*39)
-    print("|\tRow #\t-  -\t\t-  -  |")
-
-
-    #itterates though rows
-    for i in range(0, len(seats)):
-        #builds base starting string for row
-        rowString = "|\t " + str(i+1) + "\t"
-        #itterates though seat letters
-        for seat in range(0, len(seats[i])):
-            #changes spacing in rowString
-            if seat % 2 == 1 and seat != 3:
-                rowString += seats[i][seat] + "\t\t"
+# Function to get a valid row input
+def get_valid_row_input(num_rows):
+    while True:
+        try:
+            row = int(input(f"Enter the row number (1-{num_rows}): ")) - 1
+            if 0 <= row < num_rows:
+                return row
             else:
-                rowString += seats[i][seat] + "  "
-        rowString += "|"
-        print(rowString)
-    print("-"*39)
+                print(f"Invalid row number. Please enter a number between 1 and {num_rows}.")
+        except ValueError:
+            print("Invalid input. Please enter a valid row number.")
 
+# Function to get a valid seat letter input
+def get_valid_seat_letter_input():
+    while True:
+        seat = input("Enter the seat letter (A-Z): ").upper()
+        if 'A' <= seat <= 'Z':
+            return seat
+        else:
+            print("Invalid seat letter. Please enter a letter from A to Z.")
 
-printSeats(selectSeat(seats))
+# Main program
+def main():
+    # Initialize theater seating chart
+    num_rows = 15
+    num_seats_per_row = 30
+    theater_seats = [[SEAT_AVAILABLE] * num_seats_per_row for _ in range(num_rows)]
+
+    while True:
+        print("\nMenu:")
+        print("1. Select Seat(s)")
+        print("2. View Seating Chart")
+        print("3. Quit")
+
+        choice = input("Enter your choice (1-3): ")
+
+        if choice == '1':
+            theater_seats = select_seat(theater_seats)
+        elif choice == '2':
+            display_seating_chart(theater_seats)
+        elif choice == '3':
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 3.")
+
+if __name__ == "__main__":
+    main()
