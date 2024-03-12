@@ -32,8 +32,8 @@ def goodbye():
 def swap(listName, posi):
     #posi --> current position (index) of where swap needs to occur
     
-    temp = listName[posi]
-    listName[posi] = listName[k + 1]
+    temp = listName[k]
+    listName[k] = listName[k + 1]
     listName[k + 1] = temp
 
 

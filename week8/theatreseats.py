@@ -1,83 +1,104 @@
-# Define constants
-SEAT_AVAILABLE = '#'
-SEAT_TAKEN = '*'
+# Simplified variables
+columns = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234"
+rows = [["#"] * len(columns) for _ in range(15)]
+cart = []
 
-# Function to display the seating chart
-def display_seating_chart(seats):
-    # Print header
-    print("  ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    # Print rows
-    for i, row in enumerate(seats, start=1):
-        print(f"{i:2} {' '.join(row)}")
+# Functions
+def seating_chart():
+    #print the header for the seating chart
+    print("Rows\tSeats")
 
-# Function to allow the user to select a seat
-def select_seat(seats):
-    # Display seating chart
-    display_seating_chart(seats)
+    #initialize the row number
+    row_number = 1
 
-    # Loop until user finishes selecting seats
-    while True:
-        row = get_valid_row_input(len(seats))
-        seat = get_valid_seat_letter_input()
+    # Loop through each row in the 'rows' list
+    for row in rows:
+        # Combine seat symbols in the row, using ".join() and separating with spaces
+        seats_string = " ".join(row)
+        # Print the current row number and its corresponding seats
+        print(f"{row_number}\t{seats_string}")
+        
+        row_number += 1
 
-        if seats[row][ord(seat) - ord('A')] == SEAT_AVAILABLE:
-            seats[row][ord(seat) - ord('A')] = SEAT_TAKEN
-            print("Seat selected successfully.")
-        else:
-            print("Sorry, that seat is already taken. Please choose another seat.")
 
-        # Check if user wants to select another seat
-        choice = input("Do you want to select another seat? (y/n): ").lower()
-        if choice != 'y':
-            break
-
-    return seats
-
-# Function to get a valid row input
-def get_valid_row_input(num_rows):
+def get_input(prompt, validation_func):
     while True:
         try:
-            row = int(input(f"Enter the row number (1-{num_rows}): ")) - 1
-            if 0 <= row < num_rows:
-                return row
+            user_input = validation_func(input(prompt))
+            return user_input
+        except ValueError as e:
+            print(e)
+
+def get_row_input():
+    return get_input("Please enter the row number (1-15): ", lambda x: int(x) - 1)
+
+def get_column_input():
+    return get_input("Please enter the seat letter (A-4): ", lambda x: x.upper())
+
+def is_seat_available(row, column):
+    return rows[row][columns.index(column)] == "#"
+
+def add_to_cart():
+    row = get_row_input()
+    column = get_column_input()
+
+    if (row, column) in cart:
+        print("Seat is already in cart")
+    elif not is_seat_available(row, column):
+        print("Seat is not available")
+    else:
+        cart.append((row, column))
+        rows[row][columns.index(column)] = "*"  # Mark seat as taken
+
+    if input("\nWould you like to add another seat? (y/n): ").lower() == "y":
+        add_to_cart()
+
+def view_total_seat_sales():
+    for i in range(len(rows)):
+        for j in range(len(columns)):
+            seat = rows[i][j]
+            if seat == "*":
+                price = 200 if i < 6 else (175 if i < 11 else 150)
+                print(f"Seat {columns[j]} in row {i+1} - ${price}")
+
+# Other functions (unchanged)
+
+# Main program loop
+def prompt_menu():
+    print("\n\n\t\t\t\tMenu:\n")
+    print("1. Display Seats")
+    print("2. Add to cart")
+    print("3. View Total Seat Sales")
+    print("4. View Seat Information")
+    print("5. Checkout")
+    print("6. Exit")
+
+    while True:
+        try:
+            answer = int(input("\n\t\t\tPlease select an option: "))
+            if answer not in [1, 2, 3, 4, 5, 6]:
+                print("Please select a valid option")
             else:
-                print(f"Invalid row number. Please enter a number between 1 and {num_rows}.")
+                return answer
         except ValueError:
-            print("Invalid input. Please enter a valid row number.")
+            print("Please enter a number")
 
-# Function to get a valid seat letter input
-def get_valid_seat_letter_input():
-    while True:
-        seat = input("Enter the seat letter (A-Z): ").upper()
-        if 'A' <= seat <= 'Z':
-            return seat
-        else:
-            print("Invalid seat letter. Please enter a letter from A to Z.")
+def handle_answer(answer):
+    if answer == 1:
+        seating_chart()
+    elif answer == 2:
+        add_to_cart()
+    elif answer == 3:
+        view_total_seat_sales()
+    elif answer == 4:
+        view_seat_information()
+    elif answer == 5:
+        checkout()
+    else:
+        print("Thank you for using the program")
+        exit()
 
-# Main program
-def main():
-    # Initialize theater seating chart
-    num_rows = 15
-    num_seats_per_row = 30
-    theater_seats = [[SEAT_AVAILABLE] * num_seats_per_row for _ in range(num_rows)]
-
-    while True:
-        print("\nMenu:")
-        print("1. Select Seat(s)")
-        print("2. View Seating Chart")
-        print("3. Quit")
-
-        choice = input("Enter your choice (1-3): ")
-
-        if choice == '1':
-            theater_seats = select_seat(theater_seats)
-        elif choice == '2':
-            display_seating_chart(theater_seats)
-        elif choice == '3':
-            print("Exiting program.")
-            break
-        else:
-            print("Invalid choice. Please enter a number between 1 and 3.")
-
-if __name__ == "__main__":
-    main()
+answer = None
+while answer != 6:
+    answer = prompt_menu()
+    handle_answer(answer)

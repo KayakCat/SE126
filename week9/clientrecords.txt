@@ -1,0 +1,10 @@
+532, Alice, Hammond, aham@gmail.com, 401-675-5421
+736, George, Bush, gbush@yahoo.com, 401-843-2213
+893, Eric, Valley, evoo@hotmail.com, 401-345-2322
+675, Tamra, Bentley, tbent@gmail.com, 508-722-6519
+533, Alejandra, Gonzalez, alejgonz@hotmail.com, 774-896-4364
+800, Thomas, Edison, lightbulb@gmail.com, 401-996-0089
+497, Alexander, Hamilton, muscialsarecool@yahoo.com, 978-543-7786
+888, Latoya, Hall, softwhere@yahoo.com, 401-585-1032
+186, Diane, Musk, dianemusk10@gmail.com, 617-856-0099
+196, Brian, Oppenheimer, oooooookkkkkayyyy@yahoo.com, 401-234-5678
